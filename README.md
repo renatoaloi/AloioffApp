@@ -1,6 +1,6 @@
-# EspApp
+# AloioffApp
 
-> Aplicativo para Smartphone em React Native para comunicar com ESP8266
+> Aplicativo para Smartphone em React Native para comunicar com Aloioff, a tomada inteligente!
 
 ## Instalação
 
