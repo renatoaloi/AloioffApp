@@ -33,7 +33,7 @@ const MainDrawer = props => {
           onPress={() => props.navigation.navigate('NewDevice')}>
           <Opcoes>
             <MaterialIcons name="add" size={28} style={{color: 'white'}} />
-            <TextItem>New Device</TextItem>
+            <TextItem>Novo Dispositivo</TextItem>
           </Opcoes>
         </StyledTouchableOpacity>
 

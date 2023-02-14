@@ -30,8 +30,11 @@ export const Container = styled.SafeAreaView`
 
 export const H1 = styled.Text`
   align-items: center;
-  font-size: 35px;
+  font-size: 32px;
   color: #ffffff;
+  font-weight: 300;
+  width: 70%;
+  margin-left: 20px;
 `;
 
 export const Header = styled.View`

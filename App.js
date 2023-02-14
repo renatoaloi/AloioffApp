@@ -33,7 +33,7 @@ function DrawerNavigator({navigation}) {
       <Drawer.Screen name="Historic" component={Historic} />
       <Drawer.Screen name="Home" component={Home} />
       <Drawer.Screen name="Profile" component={Profile} />
-      <Drawer.Screen name="NewDevice" component={NewDevice} />
+      <Drawer.Screen name="NewDevice" component={NewDevice} options={{ title: 'Novo Dispositivo' }} />
     </Drawer.Navigator>
   );
 }

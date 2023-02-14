@@ -7,13 +7,13 @@
 - Baixe o código fonte
 
 ```
-$ git clone https://github.com/renatoaloi/EspApp.git
+$ git clone https://github.com/renatoaloi/AloioffApp.git
 ```
 
 - Acesse o diretório e instalar dependencias
 
 ```
-$ cd EspApp
+$ cd AloioffApp
 $ npm install
 ```
 
