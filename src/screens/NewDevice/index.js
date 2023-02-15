@@ -23,6 +23,7 @@ import * as Animatable from 'react-native-animatable';
 import styleGlobal from '../../styles/global';
 import dgram from 'react-native-udp'
 import esp01 from '../../imgs/esp01';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default () => {
   const navigation = useNavigation();
@@ -46,14 +47,16 @@ export default () => {
       {
         localFoundEspList = [];
       }
-      setFoundEspList([
+      const foundEsp = {
+        key: "ESP #" + countEspList + " :: " + buffer.data,
+        ip: buffer.data,
+        idx: countEspList,
+      };
+      localFoundEspList = [
         ...localFoundEspList,
-        {
-          key: "ESP #" + countEspList + " :: " + buffer.data,
-          ip: buffer.data,
-          idx: countEspList,
-        }
-      ]);
+        foundEsp
+      ]
+      setFoundEspList(localFoundEspList);
       setCountEspList(countEspList+1);
     }
     console.log('Message received', msg);
@@ -90,6 +93,23 @@ export default () => {
   function cancelSearch() {
     setLoading(false);
     socket.close();
+  }
+
+  async function addEsp(item) {
+    console.log('passei aqui 1', item);
+    var storageFoundEspList = await AsyncStorage.getItem('AloiOffDevices');
+    console.log('storageFoundEspList', storageFoundEspList);
+    var localFoundEspList = [];
+    if (Array.isArray(storageFoundEspList)) {
+      localFoundEspList = JSON.parse(storageFoundEspList);
+    }
+    localFoundEspList = [
+      ...localFoundEspList,
+      item
+    ];
+    console.log('passei aqui 2');
+    await AsyncStorage.setItem('AloioffDevices', JSON.stringify(localFoundEspList));
+    console.log('passei aqui 3');
   }
 
   return (
@@ -144,9 +164,7 @@ export default () => {
                   </View>
                   <View style={{flex: 1, borderStyle: 'solid', borderWidth: 1, borderColor: db.theme.colors.secondary, borderRadius: 5}}>
                     <TouchableOpacity
-                      onPress={() => {
-                        console.log("passei aqui no botão adicionar!");
-                      }}
+                      onPress={() => addEsp(item)}
                       style={{}}>
                       <Text style={{color: db.theme.colors.secondary, textAlign:'center'}}>+ Adicionar</Text>
                     </TouchableOpacity>
