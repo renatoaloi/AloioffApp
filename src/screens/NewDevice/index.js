@@ -42,22 +42,26 @@ export default () => {
     if (buffer.data !== 'ESP-ACK') 
     {
       console.log('data.data', buffer.data);
-      var localFoundEspList = foundEspList;
-      if (foundEspList.find(i => i.key == notFoundText))
-      {
-        localFoundEspList = [];
-      }
+      //var localFoundEspList = foundEspList;
+      // if (foundEspList.find(i => i.key == notFoundText))
+      // {
+      //   localFoundEspList = [];
+      // }
       const foundEsp = {
         key: "ESP #" + countEspList + " :: " + buffer.data,
         ip: buffer.data,
         idx: countEspList,
       };
-      localFoundEspList = [
-        ...localFoundEspList,
+      // foundEspList = [
+      //   ...foundEspList,
+      //   foundEsp
+      // ]
+      setFoundEspList([
+        ...foundEspList,
         foundEsp
-      ]
-      setFoundEspList(localFoundEspList);
+      ]);
       setCountEspList(countEspList+1);
+      console.log('foundEspList', foundEspList);
     }
     console.log('Message received', msg);
   });
