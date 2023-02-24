@@ -38,6 +38,14 @@ const MainDrawer = props => {
         </StyledTouchableOpacity>
 
         <StyledTouchableOpacity
+          onPress={() => props.navigation.navigate('ListDevices')}>
+          <Opcoes>
+            <MaterialIcons name="add" size={28} style={{color: 'white'}} />
+            <TextItem>Dispositivos Cadastrados</TextItem>
+          </Opcoes>
+        </StyledTouchableOpacity>
+
+        <StyledTouchableOpacity
           onPress={() => props.navigation.navigate('SignUp')}>
           <Opcoes>
             <MaterialIcons

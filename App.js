@@ -13,6 +13,7 @@ import Historic from './src/screens/Historic';
 import Home from './src/screens/Home';
 import Profile from './src/screens/Profile';
 import NewDevice from './src/screens/NewDevice';
+import ListDevices from './src/screens/ListDevices';
 
 const navOptionHandler = () => ({
   headerShown: false,
@@ -34,6 +35,7 @@ function DrawerNavigator({navigation}) {
       <Drawer.Screen name="Home" component={Home} />
       <Drawer.Screen name="Profile" component={Profile} />
       <Drawer.Screen name="NewDevice" component={NewDevice} options={{ title: 'Novo Dispositivo' }} />
+      <Drawer.Screen name="ListDevices" component={ListDevices} options={{title: 'Dispositivos Cadastrados'}} />
     </Drawer.Navigator>
   );
 }
