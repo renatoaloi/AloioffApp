@@ -34,37 +34,37 @@ export default () => {
   const [foundEspList, setFoundEspList] = useState([{key:notFoundText}]);
   const [countEspList, setCountEspList] = useState(1);
 
-  const socket = dgram.createSocket('udp4');
-  socket.on('message', function(msg, rinfo) {
+  let receiveBuffer = [];
+
+  
+
+  function receiveMsg(msg, rinfo) {
     var buffer = {
       data: msg.toString(),
     };
     if (buffer.data !== 'ESP-ACK') 
     {
       console.log('data.data', buffer.data);
-      //var localFoundEspList = foundEspList;
-      // if (foundEspList.find(i => i.key == notFoundText))
-      // {
-      //   localFoundEspList = [];
-      // }
       const foundEsp = {
-        key: "ESP #" + countEspList + " :: " + buffer.data,
+        key: "ESP #" + (receiveBuffer.length + 1) + " :: " + buffer.data,
         ip: buffer.data,
-        idx: countEspList,
+        idx: (receiveBuffer.length + 1),
       };
-      // foundEspList = [
-      //   ...foundEspList,
-      //   foundEsp
-      // ]
-      setFoundEspList([
-        ...foundEspList,
+      receiveBuffer = [
+        ...receiveBuffer,
         foundEsp
-      ]);
-      setCountEspList(countEspList+1);
-      console.log('foundEspList', foundEspList);
+      ];
+      if (receiveBuffer.length > 0) {
+        setFoundEspList(receiveBuffer);
+        setCountEspList(receiveBuffer.length);
+      }
+      console.log('foundEspList', receiveBuffer);
     }
     console.log('Message received', msg);
-  });
+  }
+
+  const socket = dgram.createSocket('udp4');
+  socket.on('message', receiveMsg);
 
   useEffect(() => {
     if (foundEspList.length > 1) {
@@ -101,7 +101,7 @@ export default () => {
 
   async function addEsp(item) {
     console.log('passei aqui 1', item);
-    var storageFoundEspList = await AsyncStorage.getItem('AloiOffDevices');
+    var storageFoundEspList = await AsyncStorage.getItem('@storage_Aloioff');
     console.log('storageFoundEspList', storageFoundEspList);
     var localFoundEspList = [];
     if (Array.isArray(storageFoundEspList)) {
@@ -112,7 +112,11 @@ export default () => {
       item
     ];
     console.log('passei aqui 2');
-    await AsyncStorage.setItem('AloioffDevices', JSON.stringify(localFoundEspList));
+    try {
+      await AsyncStorage.setItem('@storage_Aloioff', JSON.stringify(localFoundEspList));
+    } catch (e) {
+      console.log('passei aqui 2.5', e);
+    }
     console.log('passei aqui 3');
   }
 
