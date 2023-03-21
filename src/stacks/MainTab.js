@@ -23,17 +23,13 @@ export default () => (
         if (route.name === 'Home') {
           iconName = focused ? 'home' : 'home-outline';
         } else if (route.name === 'New Device') {
-          iconName = focused ? 'outlet' : 'outlet-outline';
+          iconName = focused ? 'power' : 'power-outline';
         } else if (route.name === 'Profile') {
           iconName = focused ? 'person-circle' : 'person-circle-outline';
         }
 
         // You can return any component that you like here!
-        return iconName == 'outlet' || iconName == 'outlet-outline' ? (
-          <MaterialIcons name={iconName} size={size} color={color} />
-        ) : (
-          <Ionicons name={iconName} size={size} color={color} />
-        );
+        return <Ionicons name={iconName} size={size} color={color} />;
       },
       tabBarActiveTintColor: 'tomato',
       tabBarInactiveTintColor: 'gray',
