@@ -4,25 +4,36 @@ import Home from '../screens/Home';
 import Profile from '../screens/Profile';
 import NewDevice from '../screens/NewDevice';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const Tab = createBottomTabNavigator();
 
 export default () => (
   <Tab.Navigator
+    tabBarOptions={{
+      labelStyle: {
+        fontSize: 16,
+      },
+    }}
     screenOptions={({route}) => ({
       tabBarIcon: ({focused, color, size}) => {
         let iconName;
 
         if (route.name === 'Home') {
-          iconName = focused
-            ? 'ios-information-circle'
-            : 'ios-information-circle-outline';
-        } else if (route.name === 'Settings') {
-          iconName = focused ? 'ios-list' : 'ios-list-outline';
+          iconName = focused ? 'home' : 'home-outline';
+        } else if (route.name === 'New Device') {
+          iconName = focused ? 'outlet' : 'outlet-outline';
+        } else if (route.name === 'Profile') {
+          iconName = focused ? 'person-circle' : 'person-circle-outline';
         }
 
         // You can return any component that you like here!
-        return <Ionicons name={iconName} size={size} color={color} />;
+        return iconName == 'outlet' || iconName == 'outlet-outline' ? (
+          <MaterialIcons name={iconName} size={size} color={color} />
+        ) : (
+          <Ionicons name={iconName} size={size} color={color} />
+        );
       },
       tabBarActiveTintColor: 'tomato',
       tabBarInactiveTintColor: 'gray',
