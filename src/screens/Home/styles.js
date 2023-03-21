@@ -7,7 +7,7 @@ export const PrimaryText = styled.Text`
 `;
 
 export const Container = styled.SafeAreaView`
-  background-color: ${db.theme.colors.primary};
+  background-color: ${db.theme.colors.mainBg};
   flex: 1;
 `;
 
