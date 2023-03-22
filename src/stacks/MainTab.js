@@ -3,6 +3,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Home from '../screens/Home';
 import Profile from '../screens/Profile';
 import NewDevice from '../screens/NewDevice';
+import Devices from '../screens/Devices';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -48,7 +49,7 @@ export default () => (
       },
     })}>
     <Tab.Screen name="Home" component={Home} />
-    <Tab.Screen name="Devices" component={NewDevice} />
+    <Tab.Screen name="Devices" component={Devices} />
     <Tab.Screen name="Profile" component={Profile} />
   </Tab.Navigator>
 );
