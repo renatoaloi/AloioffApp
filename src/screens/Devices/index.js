@@ -24,24 +24,30 @@ export default () => {
         style={{
           flex: 0.1,
           backgroundColor: 'black',
+          flexDirection: 'row',
         }}>
-        <View style={{flexDirection: 'row', alignSelf: 'center'}}>
-          <Text
-            style={{
-              paddingTop: 20,
-              paddingLeft: 20,
-              fontFamily: 'roboto mono',
-              fontSize: 20,
-            }}>
-            DISPOSITIVOS
-          </Text>
-          <AntDesign
-            style={{paddingTop: 20, paddingLeft: 20}}
-            name="pluscircleo"
-            size={26}
-            color="red"
-          />
-        </View>
+        <View style={{flex: 0.2}}></View>
+        <Text
+          style={{
+            paddingTop: 20,
+            paddingLeft: 20,
+            fontSize: 20,
+            flex: 0.6,
+            textAlign: 'center',
+          }}>
+          DISPOSITIVOS
+        </Text>
+        <AntDesign
+          style={{
+            paddingTop: 22,
+            paddingRight: 20,
+            flex: 0.2,
+            textAlign: 'right',
+          }}
+          name="pluscircleo"
+          size={26}
+          color="tomato"
+        />
       </View>
       <ScrollView
         style={{flex: 0.5, backgroundColor: 'black', marginBottom: 100}}>
@@ -51,7 +57,7 @@ export default () => {
             style={{paddingTop: 20, paddingLeft: 20}}
             name="devices-other"
             size={16}
-            color="red"
+            color="tomato"
           />
         </View>
 
