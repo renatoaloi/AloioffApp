@@ -57,10 +57,6 @@ export default () => {
     },
   });
 
-  // function addButtonPress() {
-  //   setCount(prevCount => prevCount + 1);
-  // }
-
   const addButtonPress = () => setCount(count + 1);
 
   return (
