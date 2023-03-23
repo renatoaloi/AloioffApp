@@ -19,6 +19,29 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
+const dataArray = [
+  {key: 'Devin'},
+  {key: 'Dan'},
+  {key: 'Dominic'},
+  {key: 'Jackson'},
+  {key: 'James'},
+  {key: 'Joel'},
+  {key: 'John'},
+  {key: 'Jillian'},
+  {key: 'Jimmy'},
+  {key: 'Julie'},
+  {key: 'Roberto'},
+  {key: 'Lucas'},
+  {key: 'Leonardo'},
+  {key: 'Thiago'},
+  {key: 'João'},
+  {key: 'José'},
+  {key: 'Vilma'},
+  {key: 'Gilberto'},
+  {key: 'Maria'},
+  {key: 'Marcelo'},
+];
+
 export default () => {
   const navigation = useNavigation();
   const [count, setCount] = useState(0);
@@ -76,44 +99,15 @@ export default () => {
         </TouchableOpacity>
       </View>
 
-      <View style={{flex: 0.8, marginBottom: 5, backgroundColor: 'black'}}>
-        <View style={{flexDirection: 'row'}}>
-          <Text style={{marginTop: 20}}>Novo Dispositivo</Text>
-          <MaterialIcons
-            style={{paddingTop: 20, paddingLeft: 20}}
-            name="devices-other"
-            size={16}
-            color="tomato"
-          />
-        </View>
-
-        <Text style={{marginTop: 20}}>Count: {count}</Text>
-
+      <View style={{flex: 0.85, marginBottom: 60, backgroundColor: 'black'}}>
         <FlatList
-          data={[
-            {key: 'Devin'},
-            {key: 'Dan'},
-            {key: 'Dominic'},
-            {key: 'Jackson'},
-            {key: 'James'},
-            {key: 'Joel'},
-            {key: 'John'},
-            {key: 'Jillian'},
-            {key: 'Jimmy'},
-            {key: 'Julie'},
-            {key: 'Roberto'},
-            {key: 'Lucas'},
-            {key: 'Leonardo'},
-            {key: 'Thiago'},
-            {key: 'João'},
-            {key: 'José'},
-            {key: 'Vilma'},
-            {key: 'Gilberto'},
-            {key: 'Maria'},
-            {key: 'Marcelo'},
-          ]}
+          data={dataArray}
           renderItem={({item}) => <Text style={styles.item}>{item.key}</Text>}
         />
+
+        <Text style={{marginTop: 20}}>
+          Total de Registros: {dataArray.length}
+        </Text>
       </View>
     </Container>
   );
