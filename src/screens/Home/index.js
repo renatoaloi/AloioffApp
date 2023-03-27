@@ -15,6 +15,9 @@ import * as Animatable from 'react-native-animatable';
 import styleGlobal from '../../styles/global';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import logoHome from '../../imgs/logoHome';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 export default () => {
   const navigation = useNavigation();
@@ -26,21 +29,21 @@ export default () => {
         backgroundColor={db.theme.colors.statuBar}
         barStyle="light-content"
       />
+
       <View
         style={{
-          flex: 0.1,
+          flex: 0.3,
           backgroundColor: 'black',
           flexDirection: 'row',
         }}>
-        <View style={{flex: 0.2}}>
-          <Text>Ola Mundo</Text>
-        </View>
-        <View style={{flex: 0.6}}>
+        <View style={{flex: 0.2}}></View>
+        <View style={{flex: 0.6, alignItems: 'center', marginTop: 10}}>
           <Image
             style={{
-              width: 60,
-              height: 30,
+              width: 120,
+              height: 60,
               marginLeft: 20,
+              opacity: 0.6,
             }}
             source={logoHome}
           />
@@ -58,18 +61,53 @@ export default () => {
       </View>
 
       <ScrollView>
-        <Text>AloiApp (AloiOscar?) AloiEco</Text>
-        <Text>Aplicativo para a tomada inteligente Aloioff!</Text>
-        <Text>
-          Utilize o botão abaixo para encontrar suas tomadas Aloioff pela rede!
+        <Text
+          style={{
+            color: 'tomato',
+            fontSize: 28,
+            marginLeft: 20,
+            marginTop: 20,
+            fontWeight: 800,
+          }}>
+          AloiEco
         </Text>
-        <Text>Acompanhe os tutoriais de instalação da tomada Aloioff</Text>
-        <Text>- Tutorial como configurar o Aloioff</Text>
-        <Text>
-          - Tutorial como encontrar e registrar seu Aloioff nos assistentes
-          virtuais
+        <Text
+          style={{
+            color: 'gray',
+            fontSize: 18,
+            marginBottom: 20,
+            marginLeft: 20,
+            fontWeight: 700,
+          }}>
+          Aplicativo para a tomada inteligente Aloioff!
         </Text>
-        <Text>Assista os vídeos de tutoriais (link para o youtube)</Text>
+        <View style={{marginLeft: 20}}>
+          <Text style={{fontSize: 16}}>
+            Utilize o botão abaixo para encontrar suas tomadas Aloioff pela
+            rede!
+          </Text>
+          <View style={{flex: 1, flexDirection: 'row'}}>
+            <View
+              style={{
+                borderStyle: 'solid',
+                borderWidth: 4,
+                flex: 0.25,
+                margin: 20,
+                borderRadius: 20,
+                borderColor: 'tomato',
+                opacity: 0.6,
+              }}>
+              <Ionicons name="add-outline" color="tomato" size={72} />
+            </View>
+          </View>
+          <Text>Acompanhe os tutoriais de instalação da tomada Aloioff</Text>
+          <Text>- Tutorial como configurar o Aloioff</Text>
+          <Text>
+            - Tutorial como encontrar e registrar seu Aloioff nos assistentes
+            virtuais
+          </Text>
+          <Text>Assista os vídeos de tutoriais (link para o youtube)</Text>
+        </View>
       </ScrollView>
     </Container>
   );
