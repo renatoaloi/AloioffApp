@@ -19,6 +19,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {TitleText, SubtitleText} from './styles';
+import thumbnalisVideos from '../../imgs/thumbnalisVideos';
 
 const HomeHeader = ({addButtonPress}) => {
   return (
@@ -103,6 +104,43 @@ export default () => {
           virtuais
         </Text>
         <Text>Assista os vídeos de tutoriais (link para o youtube)</Text>
+        <ScrollView horizontal={true}>
+          <View style={{flex: 0.1, flexDirection: 'row'}}>
+            <View>
+              <Image
+                style={{
+                  width: 160,
+                  height: 93,
+                  marginLeft: 10,
+                  opacity: 0.6,
+                }}
+                source={thumbnalisVideos}
+              />
+            </View>
+            <View>
+              <Image
+                style={{
+                  width: 160,
+                  height: 93,
+                  marginLeft: 10,
+                  opacity: 0.6,
+                }}
+                source={thumbnalisVideos}
+              />
+            </View>
+            <View>
+              <Image
+                style={{
+                  width: 160,
+                  height: 93,
+                  marginLeft: 10,
+                  opacity: 0.6,
+                }}
+                source={thumbnalisVideos}
+              />
+            </View>
+          </View>
+        </ScrollView>
       </ScrollView>
     </Container>
   );

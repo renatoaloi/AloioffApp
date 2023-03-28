@@ -25,9 +25,9 @@ export const Header = styled.View`
 
 export const TitleText = styled.Text`
   color: tomato;
-  font-size: 28;
-  margin-left: 20;
-  margin-top: 20;
+  font-size: 28px;
+  margin-left: 20px;
+  margin-top: 20px;
   font-weight: 800;
 `;
 
