@@ -1,5 +1,13 @@
 import React, {useState} from 'react';
-import {Container, Header, H1, PrimaryText} from './styles';
+import {
+  Container,
+  Header,
+  H1,
+  PrimaryText,
+  ListView,
+  TextRegister,
+  TextItem,
+} from './styles';
 import {
   Alert,
   ScrollView,
@@ -42,6 +50,39 @@ const dataArray = [
   {key: 'Marcelo'},
 ];
 
+const HeaderDevices = ({addButtonPress}) => {
+  return (
+    <View
+      style={{
+        flex: 0.2,
+        backgroundColor: 'black',
+        flexDirection: 'row',
+      }}>
+      <View style={{flex: 0.2}}></View>
+      <Text
+        style={{
+          paddingTop: 20,
+          paddingLeft: 20,
+          fontSize: 20,
+          flex: 0.6,
+          textAlign: 'center',
+        }}>
+        DISPOSITIVOS
+      </Text>
+      <TouchableOpacity
+        onPress={addButtonPress}
+        style={{
+          paddingTop: 22,
+          paddingRight: 22,
+          flex: 0.2,
+          alignItems: 'flex-end',
+        }}>
+        <AntDesign name="pluscircleo" size={26} color="tomato" />
+      </TouchableOpacity>
+    </View>
+  );
+};
+
 export default () => {
   const navigation = useNavigation();
   const [count, setCount] = useState(0);
@@ -50,10 +91,6 @@ export default () => {
     container: {
       flex: 1,
       paddingTop: 22,
-    },
-    item: {
-      padding: 10,
-      height: 44,
     },
   });
 
@@ -65,46 +102,14 @@ export default () => {
         backgroundColor={db.theme.colors.statuBar}
         barStyle="light-content"
       />
-
-      <View
-        style={{
-          flex: 0.2,
-          backgroundColor: 'black',
-          flexDirection: 'row',
-        }}>
-        <View style={{flex: 0.2}}></View>
-        <Text
-          style={{
-            paddingTop: 20,
-            paddingLeft: 20,
-            fontSize: 20,
-            flex: 0.6,
-            textAlign: 'center',
-          }}>
-          DISPOSITIVOS
-        </Text>
-        <TouchableOpacity
-          onPress={addButtonPress}
-          style={{
-            paddingTop: 22,
-            paddingRight: 22,
-            flex: 0.2,
-            alignItems: 'flex-end',
-          }}>
-          <AntDesign name="pluscircleo" size={26} color="tomato" />
-        </TouchableOpacity>
-      </View>
-
-      <View style={{flex: 0.85, marginBottom: 60, backgroundColor: 'black'}}>
+      <HeaderDevices addButtonPress={addButtonPress} />
+      <ListView>
         <FlatList
           data={dataArray}
-          renderItem={({item}) => <Text style={styles.item}>{item.key}</Text>}
+          renderItem={({item}) => <TextItem>{item.key}</TextItem>}
         />
-
-        <Text style={{marginTop: 20}}>
-          Total de Registros: {dataArray.length}
-        </Text>
-      </View>
+        <TextRegister>Total de Registros: {dataArray.length}</TextRegister>
+      </ListView>
     </Container>
   );
 };
