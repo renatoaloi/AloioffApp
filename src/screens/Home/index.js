@@ -20,40 +20,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {TitleText, SubtitleText} from './styles';
 import thumbnalisVideos from '../../imgs/thumbnalisVideos';
-
-const HomeHeader = ({addButtonPress}) => {
-  return (
-    <View
-      style={{
-        flex: 0.3,
-        backgroundColor: 'black',
-        flexDirection: 'row',
-      }}>
-      <View style={{flex: 0.2}}></View>
-      <View style={{flex: 0.6, alignItems: 'center', marginTop: 10}}>
-        <Image
-          style={{
-            width: 120,
-            height: 60,
-            marginLeft: 20,
-            opacity: 0.6,
-          }}
-          source={logoHome}
-        />
-      </View>
-      <TouchableOpacity
-        onPress={addButtonPress}
-        style={{
-          paddingTop: 22,
-          paddingRight: 22,
-          flex: 0.2,
-          alignItems: 'flex-end',
-        }}>
-        <AntDesign name="pluscircleo" size={26} color="tomato" />
-      </TouchableOpacity>
-    </View>
-  );
-};
+import HomeHeader from '../../components/HomeHeader';
 
 export default () => {
   const navigation = useNavigation();
@@ -65,9 +32,7 @@ export default () => {
         backgroundColor={db.theme.colors.statuBar}
         barStyle="light-content"
       />
-
       <HomeHeader addButtonPress={addButtonPress} />
-
       <ScrollView>
         <TitleText>AloiEco</TitleText>
         <SubtitleText>
