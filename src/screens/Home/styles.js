@@ -22,3 +22,19 @@ export const Header = styled.View`
   margin: 50px auto 0 auto;
   padding-bottom: 50px;
 `;
+
+export const TitleText = styled.Text`
+  color: tomato;
+  font-size: 28;
+  margin-left: 20;
+  margin-top: 20;
+  font-weight: 800;
+`;
+
+export const SubtitleText = styled.Text`
+  color: gray;
+  font-size: 18px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  font-weight: 700;
+`;
