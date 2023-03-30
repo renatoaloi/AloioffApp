@@ -39,7 +39,10 @@ export default () => {
     },
   });
 
-  const addButtonPress = () => setCount(count + 1);
+  const addButtonPress = () => {
+    console.log('passei aqui');
+    navigation.navigate('NewDevice');
+  };
 
   return (
     <Container>

@@ -1,4 +1,5 @@
 import React from 'react';
+import 'react-native-gesture-handler';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Home from '../screens/Home';
 import Profile from '../screens/Profile';
@@ -8,8 +9,10 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import db from '../../db.json';
+import {createStackNavigator} from '@react-navigation/stack';
 
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
 export default () => (
   <Tab.Navigator

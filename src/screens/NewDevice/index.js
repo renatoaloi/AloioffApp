@@ -146,7 +146,7 @@ export default () => {
               renderItem={({item}) => (
                 <View style={{flexDirection: 'row', marginTop: 20}}>
                   <View style={{flex: 3}}>
-                    <Text style={{color: 'black'}}>{item.key}</Text>
+                    <Text style={{color: 'tomato'}}>{item.key}</Text>
                   </View>
                   <View
                     style={{
