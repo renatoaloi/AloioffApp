@@ -12,7 +12,6 @@ import db from '../../db.json';
 import {createStackNavigator} from '@react-navigation/stack';
 
 const Tab = createBottomTabNavigator();
-const Stack = createStackNavigator();
 
 export default () => (
   <Tab.Navigator

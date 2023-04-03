@@ -8,7 +8,7 @@ const HomeHeader = ({addButtonPress}) => {
   return (
     <ViewMain
       style={{
-        flex: 0.3,
+        flex: 0.2,
         backgroundColor: 'black',
         flexDirection: 'row',
       }}>
