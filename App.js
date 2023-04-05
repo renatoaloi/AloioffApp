@@ -4,6 +4,7 @@ import MainTab from './src/stacks/MainTab';
 import HiddenPages from './src/stacks/HiddenPages';
 import {createStackNavigator} from '@react-navigation/stack';
 import NewDevice from './src/screens/NewDevice';
+import DeviceDetail from './src/screens/DeviceDetail';
 
 const Stack = createStackNavigator();
 
@@ -17,6 +18,7 @@ export default function App() {
           options={{headerShown: false}}
         />
         <Stack.Screen name="NewDevice" component={NewDevice} />
+        <Stack.Screen name="DeviceDetail" component={DeviceDetail} />
       </Stack.Navigator>
     </NavigationContainer>
   );

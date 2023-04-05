@@ -44,12 +44,17 @@ export default () => {
       if (foundEspList.find(i => i.key == notFoundText)) {
         localFoundEspList = [];
       }
+      var jsonData = JSON.parse(buffer.data);
       setFoundEspList([
         ...localFoundEspList,
         {
-          key: 'ESP #' + countEspList + ' :: ' + buffer.data,
-          ip: buffer.data,
+          key: 'ESP #' + jsonData.id + ' :: ' + jsonData.ip,
+          ip: jsonData.ip,
           idx: countEspList,
+          id: jsonData.id,
+          typeId: jsonData.typeId,
+          typeDescription: jsonData.typeDescription,
+          deviceName: jsonData.deviceName,
         },
       ]);
       setCountEspList(countEspList + 1);
@@ -159,6 +164,7 @@ export default () => {
                     <TouchableOpacity
                       onPress={() => {
                         console.log('passei aqui no botão adicionar!');
+                        navigation.navigate('DeviceDetail', item);
                       }}
                       style={{}}>
                       <Text
