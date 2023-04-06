@@ -1,8 +1,7 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {Text, View, StatusBar} from 'react-native';
 import db from '../../../db.json';
-import {Container} from 'native-base';
-import {PrimaryText, PrimaryView} from './styles';
+import {PrimaryText, PrimaryView, Container} from './styles';
 import {useNavigation} from '@react-navigation/native';
 import DeviceDetailHeader from '../../components/DeviceDetailHeader';
 

@@ -1,6 +1,10 @@
 import styled from 'styled-components/native';
 import db from '../../../db.json';
 
+export const ViewFlex = styled.View`
+  flex: 0.8;
+`;
+
 export const ButtonView = styled.View`
   margin-top: 20px;
 `;

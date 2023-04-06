@@ -7,6 +7,7 @@ import {
   H1,
   PrimaryText,
   LoadingIcon,
+  ViewFlex,
 } from './styles';
 import {
   Text,
@@ -115,7 +116,7 @@ export default () => {
         barStyle="light-content"
       />
       <NewDeviceHeader addButtonPress={addButtonPress} />
-      <ScrollView>
+      <ViewFlex>
         <Header>
           <View style={{flexDirection: 'row'}}>
             <Image
@@ -188,7 +189,7 @@ export default () => {
             />
           </View>
         </View>
-      </ScrollView>
+      </ViewFlex>
     </Container>
   );
 };

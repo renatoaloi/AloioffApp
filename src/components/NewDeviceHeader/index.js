@@ -5,12 +5,7 @@ import {ViewMain} from './styles';
 
 const NewDeviceHeader = ({addButtonPress}) => {
   return (
-    <ViewMain
-      style={{
-        flex: 0.2,
-        backgroundColor: 'black',
-        flexDirection: 'row',
-      }}>
+    <ViewMain>
       <View style={{flex: 0.2}}></View>
       <TouchableOpacity
         onPress={addButtonPress}

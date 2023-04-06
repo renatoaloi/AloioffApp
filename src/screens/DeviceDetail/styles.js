@@ -10,3 +10,8 @@ export const PrimaryView = styled.View`
   background-color: ${db.theme.colors.mainBg};
   flex: 0.8;
 `;
+
+export const Container = styled.SafeAreaView`
+  background-color: ${db.theme.colors.mainBg};
+  flex: 1;
+`;
