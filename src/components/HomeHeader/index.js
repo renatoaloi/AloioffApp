@@ -6,12 +6,7 @@ import {ViewMain} from './styles';
 
 const HomeHeader = ({addButtonPress}) => {
   return (
-    <ViewMain
-      style={{
-        flex: 0.2,
-        backgroundColor: 'black',
-        flexDirection: 'row',
-      }}>
+    <ViewMain>
       <View style={{flex: 0.2}}></View>
       <View style={{flex: 0.6, alignItems: 'center', marginTop: 10}}>
         <Image

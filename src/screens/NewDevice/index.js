@@ -36,7 +36,7 @@ export default () => {
 
   const addButtonPress = () => {
     console.log('passei aqui');
-    navigation.goBack;
+    navigation.goBack();
   };
 
   const socket = dgram.createSocket('udp4');
@@ -115,16 +115,16 @@ export default () => {
         barStyle="light-content"
       />
       <NewDeviceHeader addButtonPress={addButtonPress} />
-      <Header>
-        <View style={{flexDirection: 'row'}}>
-          <Image
-            style={{width: 90, height: 90, marginLeft: 20}}
-            source={esp01}
-          />
-          <H1>Adicionar Dispositivo</H1>
-        </View>
-      </Header>
-      <Animatable.View animation="fadeInUpBig" style={[styleGlobal.footer]}>
+      <ScrollView>
+        <Header>
+          <View style={{flexDirection: 'row'}}>
+            <Image
+              style={{width: 90, height: 90, marginLeft: 20}}
+              source={esp01}
+            />
+            <H1>Adicionar Dispositivo</H1>
+          </View>
+        </Header>
         <View
           style={styleGlobal.scrollViewSignIn}
           keyboardShouldPersistTaps={'handled'}>
@@ -188,7 +188,7 @@ export default () => {
             />
           </View>
         </View>
-      </Animatable.View>
+      </ScrollView>
     </Container>
   );
 };

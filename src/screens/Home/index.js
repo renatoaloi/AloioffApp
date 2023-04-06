@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, Header, H1, PrimaryText} from './styles';
+import {Container, Header, H1, PrimaryText, ScrollViewFlex} from './styles';
 import {
   ScrollView,
   StatusBar,
@@ -33,7 +33,7 @@ export default () => {
         barStyle="light-content"
       />
       <HomeHeader addButtonPress={addButtonPress} />
-      <ScrollView>
+      <ScrollViewFlex style={{flex: 0.8}}>
         <TitleText>AloiEco</TitleText>
         <SubtitleText>
           Aplicativo para a tomada inteligente Aloioff!
@@ -106,7 +106,7 @@ export default () => {
             </View>
           </View>
         </ScrollView>
-      </ScrollView>
+      </ScrollViewFlex>
     </Container>
   );
 };

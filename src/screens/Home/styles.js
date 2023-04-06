@@ -1,6 +1,10 @@
 import styled from 'styled-components/native';
 import db from '../../../db.json';
 
+export const ScrollViewFlex = styled.ScrollView`
+  flex: 0.8;
+`;
+
 export const PrimaryText = styled.Text`
   font-size: 28px;
   color: ${db.theme.colors.primary};

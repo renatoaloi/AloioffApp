@@ -4,7 +4,7 @@ import db from '../../../db.json';
 import {Container} from 'native-base';
 import {PrimaryText, PrimaryView} from './styles';
 import {useNavigation} from '@react-navigation/native';
-import DeviceDestailHeader from '../../components/DeviceDestailHeader';
+import DeviceDetailHeader from '../../components/DeviceDetailHeader';
 
 export default ({route, navigation}) => {
   const {ip, id, typeId, typeDescription, deviceName} = route.params;
@@ -19,7 +19,7 @@ export default ({route, navigation}) => {
         backgroundColor={db.theme.colors.statuBar}
         barStyle="light-content"
       />
-      <DeviceDestailHeader addButtonPress={addButtonPress} />
+      <DeviceDetailHeader addButtonPress={addButtonPress} />
       <PrimaryView>
         <PrimaryText>ip: {ip}</PrimaryText>
         <PrimaryText>Id: {id}</PrimaryText>
