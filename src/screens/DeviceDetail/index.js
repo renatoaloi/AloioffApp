@@ -4,7 +4,7 @@ import db from '../../../db.json';
 import {Container} from 'native-base';
 import {PrimaryText, PrimaryView} from './styles';
 import {useNavigation} from '@react-navigation/native';
-import DeviceDestailHeader from '../../components/DeviceDestailHeader';
+import DeviceDetailHeader from '../../components/DeviceDetailHeader';
 
 export default ({route, navigation}) => {
   const {ip, id, typeId, typeDescription, deviceName} = route.params;
