@@ -17,8 +17,16 @@ export default function App() {
           component={MainTab}
           options={{headerShown: false}}
         />
-        <Stack.Screen name="NewDevice" component={NewDevice} />
-        <Stack.Screen name="DeviceDetail" component={DeviceDetail} />
+        <Stack.Screen
+          name="NewDevice"
+          component={NewDevice}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="DeviceDetail"
+          component={DeviceDetail}
+          options={{headerShown: false}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

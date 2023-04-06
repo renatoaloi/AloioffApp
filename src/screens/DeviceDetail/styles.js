@@ -8,5 +8,5 @@ export const PrimaryText = styled.Text`
 
 export const PrimaryView = styled.View`
   background-color: ${db.theme.colors.mainBg};
-  flex: 1;
+  flex: 0.8;
 `;

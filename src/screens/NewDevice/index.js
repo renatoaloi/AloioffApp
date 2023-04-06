@@ -23,6 +23,7 @@ import * as Animatable from 'react-native-animatable';
 import styleGlobal from '../../styles/global';
 import dgram from 'react-native-udp';
 import esp01 from '../../imgs/esp01';
+import NewDeviceHeader from '../../components/NewDeviceHeader';
 
 export default () => {
   const navigation = useNavigation();
@@ -32,6 +33,11 @@ export default () => {
   const [loading, setLoading] = useState(false);
   const [foundEspList, setFoundEspList] = useState([{key: notFoundText}]);
   const [countEspList, setCountEspList] = useState(1);
+
+  const addButtonPress = () => {
+    console.log('passei aqui');
+    navigation.goBack;
+  };
 
   const socket = dgram.createSocket('udp4');
   socket.on('message', function (msg, rinfo) {
@@ -108,6 +114,7 @@ export default () => {
         backgroundColor={db.theme.colors.statuBar}
         barStyle="light-content"
       />
+      <NewDeviceHeader addButtonPress={addButtonPress} />
       <Header>
         <View style={{flexDirection: 'row'}}>
           <Image
