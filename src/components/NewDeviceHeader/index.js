@@ -11,20 +11,20 @@ const NewDeviceHeader = ({addButtonPress}) => {
         onPress={addButtonPress}
         style={{
           paddingTop: 22,
-          flex: 0.2,
+          flex: 0.1,
           alignItems: 'flex-start',
         }}>
         <Ionicons
           name="md-arrow-back-circle-outline"
-          size={26}
+          size={30}
           color="tomato"
         />
       </TouchableOpacity>
       <Text
         style={{
           paddingTop: 20,
-          fontSize: 20,
-          flex: 0.8,
+          fontSize: 23,
+          flex: 0.9,
           textAlign: 'center',
         }}>
         NOVO DISPOSITIVO
