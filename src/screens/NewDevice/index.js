@@ -180,7 +180,7 @@ export default () => {
                           color: db.theme.colors.secondary,
                           textAlign: 'center',
                         }}>
-                        + Adicionar
+                        Detalhes
                       </Text>
                     </TouchableOpacity>
                   </View>

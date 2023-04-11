@@ -27,7 +27,7 @@ const HomeHeader = ({addButtonPress}) => {
           flex: 0.2,
           alignItems: 'flex-end',
         }}>
-        <AntDesign name="pluscircleo" size={26} color="tomato" />
+        <AntDesign name="questioncircleo" size={30} color="tomato" />
       </TouchableOpacity>
     </ViewMain>
   );

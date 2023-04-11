@@ -6,29 +6,37 @@ import {ViewMain} from './styles';
 const NewDeviceHeader = ({addButtonPress}) => {
   return (
     <ViewMain>
-      <View style={{flex: 0.2}}></View>
-      <TouchableOpacity
-        onPress={addButtonPress}
+      <View
         style={{
-          paddingTop: 22,
-          flex: 0.1,
-          alignItems: 'flex-start',
+          flex: 0.2,
         }}>
-        <Ionicons
-          name="md-arrow-back-circle-outline"
-          size={30}
-          color="tomato"
-        />
-      </TouchableOpacity>
-      <Text
+        <TouchableOpacity
+          onPress={addButtonPress}
+          style={{
+            paddingTop: 22,
+            paddingLeft: 10,
+          }}>
+          <Ionicons
+            name="md-arrow-back-circle-outline"
+            size={35}
+            color="tomato"
+          />
+        </TouchableOpacity>
+      </View>
+      <View style={{flex: 0.6}}>
+        <Text
+          style={{
+            marginTop: 20,
+            fontSize: 23,
+            textAlign: 'center',
+          }}>
+          NOVO DISPOSITIVO
+        </Text>
+      </View>
+      <View
         style={{
-          paddingTop: 20,
-          fontSize: 23,
-          flex: 0.9,
-          textAlign: 'center',
-        }}>
-        NOVO DISPOSITIVO
-      </Text>
+          flex: 0.2,
+        }}></View>
     </ViewMain>
   );
 };
