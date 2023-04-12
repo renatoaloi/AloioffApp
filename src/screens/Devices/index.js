@@ -1,11 +1,12 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Container, ListView, TextRegister, TextItem} from './styles';
 import {StatusBar, FlatList, StyleSheet} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import db from '../../../db.json';
 import DevicesHeader from '../../components/DevicesHeader';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const dataArray = [
+let dataArray = [
   {key: 'Devin'},
   {key: 'Dan'},
   {key: 'Dominic'},
@@ -28,6 +29,8 @@ const dataArray = [
   {key: 'Marcelo'},
 ];
 
+const storageKey = '@storage_aloioff';
+
 export default () => {
   const navigation = useNavigation();
   const [count, setCount] = useState(0);
@@ -44,6 +47,16 @@ export default () => {
     navigation.navigate('NewDevice');
   };
 
+  const Search = async () => {
+    const jsonValue = await AsyncStorage.getItem(storageKey);
+    return jsonValue != null ? JSON.parse(jsonValue) : null;
+    dataArray = [...dataArray, jsonValue];
+  };
+
+  useEffect(() => {
+    Search();
+  }, []);
+
   return (
     <Container>
       <StatusBar
@@ -54,7 +67,7 @@ export default () => {
       <ListView>
         <FlatList
           data={dataArray}
-          renderItem={({item}) => <TextItem>{item.key}</TextItem>}
+          renderItem={({item}) => <TextItem>{item.ip}</TextItem>}
         />
         <TextRegister>Total de Registros: {dataArray.length}</TextRegister>
       </ListView>

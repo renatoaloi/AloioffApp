@@ -1,15 +1,30 @@
-import React from 'react';
-import {Text, View, StatusBar} from 'react-native';
+import React, {useState} from 'react';
+import {Text, View, StatusBar, Alert} from 'react-native';
 import db from '../../../db.json';
-import {PrimaryTitle, PrimaryText, PrimaryView, Container} from './styles';
+import {
+  PrimaryTitle,
+  PrimaryText,
+  SecondaryText,
+  PrimaryView,
+  Container,
+} from './styles';
 import {useNavigation} from '@react-navigation/native';
 import DeviceDetailHeader from '../../components/DeviceDetailHeader';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {TouchableOpacity} from 'react-native-gesture-handler';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default ({route, navigation}) => {
   const {ip, id, typeId, typeDescription, deviceName} = route.params;
   const addButtonPress = () => {
     navigation.goBack();
+  };
+
+  const storageKey = '@storage_aloioff';
+
+  const Storage = async value => {
+    const jsonValue = JSON.stringify(value);
+    AsyncStorage.setItem(storageKey, value);
   };
 
   return (
@@ -30,6 +45,16 @@ export default ({route, navigation}) => {
             <PrimaryText>{typeDescription}</PrimaryText>
             <PrimaryTitle>Nome do Dispositivo: </PrimaryTitle>
             <PrimaryText>{deviceName}</PrimaryText>
+
+            <TouchableOpacity
+              onPress={() => {
+                console.log('passei aqui no botão adicionar!');
+                Alert.alert('Dispositivo Adicionado com Sucesso!');
+                Storage(route.params);
+                navigation.navigate('Devices');
+              }}>
+              <SecondaryText>Cadastrar Dispositivo</SecondaryText>
+            </TouchableOpacity>
           </View>
           <View
             style={{

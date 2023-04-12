@@ -8,6 +8,17 @@ export const PrimaryText = styled.Text`
   color: ${db.theme.colors.text};
 `;
 
+export const SecondaryText = styled.Text`
+  color: tomato;
+  text-align: center;
+  font-size: 19px;
+  margin-top: 30px
+  border-color: tomato;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5px;
+`;
+
 export const PrimaryTitle = styled.Text`
   font-size: 20px;
   margin-left: 10px;
