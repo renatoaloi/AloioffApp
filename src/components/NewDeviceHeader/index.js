@@ -26,7 +26,7 @@ const NewDeviceHeader = ({addButtonPress}) => {
       <View style={{flex: 0.6}}>
         <Text
           style={{
-            marginTop: 20,
+            marginTop: 25,
             fontSize: 23,
             textAlign: 'center',
           }}>
