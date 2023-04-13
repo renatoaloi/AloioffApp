@@ -24,7 +24,8 @@ export default ({route, navigation}) => {
 
   const Storage = async value => {
     const jsonValue = JSON.stringify(value);
-    AsyncStorage.setItem(storageKey, value);
+    AsyncStorage.setItem(storageKey, jsonValue);
+    console.log('storage saved', jsonValue);
   };
 
   return (
