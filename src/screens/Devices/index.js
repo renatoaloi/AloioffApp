@@ -7,34 +7,13 @@ import DevicesHeader from '../../components/DevicesHeader';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
-const dataArray = [
-  {key: 'Devin'},
-  {key: 'Dan'},
-  {key: 'Dominic'},
-  {key: 'Jackson'},
-  {key: 'James'},
-  {key: 'Joel'},
-  {key: 'John'},
-  {key: 'Jillian'},
-  {key: 'Jimmy'},
-  {key: 'Julie'},
-  {key: 'Roberto'},
-  {key: 'Lucas'},
-  {key: 'Leonardo'},
-  {key: 'Thiago'},
-  {key: 'João'},
-  {key: 'José'},
-  {key: 'Vilma'},
-  {key: 'Gilberto'},
-  {key: 'Maria'},
-  {key: 'Marcelo'},
-];
+const dataArray = [];
 
 const storageKey = '@storage_aloioff';
 
 export default () => {
   const navigation = useNavigation();
-  const [arrayList, setArray] = useState(dataArray);
+  const [arrayList, setArrayList] = useState(dataArray);
 
   const styles = StyleSheet.create({
     container: {
@@ -54,7 +33,7 @@ export default () => {
     console.log('storage found', jsonFound);
     var arrayListLocal = [...arrayList, jsonFound];
     console.log('array found', arrayListLocal);
-    setArray(arrayListLocal);
+    setArrayList(arrayListLocal);
   };
 
   return (
