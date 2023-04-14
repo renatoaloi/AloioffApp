@@ -66,7 +66,7 @@ export default () => {
       <DevicesHeader addButtonPress={addButtonPress} />
       <TouchableOpacity
         onPress={() => {
-          console.log('passei aqui no botão pesquisar!');
+          console.log('passei aqui no botão recarregar!');
           Search();
         }}>
         <Text
