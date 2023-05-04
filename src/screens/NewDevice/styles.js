@@ -1,6 +1,10 @@
 import styled from 'styled-components/native';
 import db from '../../../db.json';
 
+export const ViewFlex = styled.View`
+  flex: 0.8;
+`;
+
 export const ButtonView = styled.View`
   margin-top: 20px;
 `;
@@ -24,7 +28,7 @@ export const ButtonText = styled.Text`
 `;
 
 export const Container = styled.SafeAreaView`
-  background-color: ${db.theme.colors.primary};
+  background-color: ${db.theme.colors.mainBg};
   flex: 1;
 `;
 

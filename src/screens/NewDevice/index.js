@@ -7,6 +7,7 @@ import {
   H1,
   PrimaryText,
   LoadingIcon,
+  ViewFlex,
 } from './styles';
 import {
   Text,
@@ -15,14 +16,15 @@ import {
   TouchableOpacity,
   View,
   FlatList,
-  Image
+  Image,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import db from '../../../db.json';
 import * as Animatable from 'react-native-animatable';
 import styleGlobal from '../../styles/global';
-import dgram from 'react-native-udp'
+import dgram from 'react-native-udp';
 import esp01 from '../../imgs/esp01';
+import NewDeviceHeader from '../../components/NewDeviceHeader';
 
 export default () => {
   const navigation = useNavigation();
@@ -30,31 +32,39 @@ export default () => {
   const notFoundText = 'Aqui vai o resultado';
 
   const [loading, setLoading] = useState(false);
-  const [foundEspList, setFoundEspList] = useState([{key:notFoundText}]);
+  const [foundEspList, setFoundEspList] = useState([{key: notFoundText}]);
   const [countEspList, setCountEspList] = useState(1);
 
+  const addButtonPress = () => {
+    console.log('passei aqui');
+    navigation.goBack();
+  };
+
   const socket = dgram.createSocket('udp4');
-  socket.on('message', function(msg, rinfo) {
+  socket.on('message', function (msg, rinfo) {
     var buffer = {
       data: msg.toString(),
     };
-    if (buffer.data !== 'ESP-ACK') 
-    {
+    if (buffer.data !== 'ESP-ACK') {
       console.log('data.data', buffer.data);
       var localFoundEspList = foundEspList;
-      if (foundEspList.find(i => i.key == notFoundText))
-      {
+      if (foundEspList.find(i => i.key == notFoundText)) {
         localFoundEspList = [];
       }
+      var jsonData = JSON.parse(buffer.data);
       setFoundEspList([
         ...localFoundEspList,
         {
-          key: "ESP #" + countEspList + " :: " + buffer.data,
-          ip: buffer.data,
+          key: 'ESP #' + jsonData.id + ' :: ' + jsonData.ip,
+          ip: jsonData.ip,
           idx: countEspList,
-        }
+          id: jsonData.id,
+          typeId: jsonData.typeId,
+          typeDescription: jsonData.typeDescription,
+          deviceName: jsonData.deviceName,
+        },
       ]);
-      setCountEspList(countEspList+1);
+      setCountEspList(countEspList + 1);
     }
     console.log('Message received', msg);
   });
@@ -66,18 +76,25 @@ export default () => {
   }, [foundEspList]);
 
   function tryToConnect(options) {
-    socket.bind(options.port)
-    socket.once('listening', function() {
-      socket.send('ESP-ACK', undefined, undefined, options.port, options.host, function(err) {
-        if (err) throw err
-        console.log('Message sent!')
-      })
-    })
+    socket.bind(options.port);
+    socket.once('listening', function () {
+      socket.send(
+        'ESP-ACK',
+        undefined,
+        undefined,
+        options.port,
+        options.host,
+        function (err) {
+          if (err) throw err;
+          console.log('Message sent!');
+        },
+      );
+    });
   }
 
   function beginSearch() {
     setLoading(true);
-    setFoundEspList([{key:notFoundText}]);
+    setFoundEspList([{key: notFoundText}]);
     const options = {
       port: port,
       host: '192.168.0.255',
@@ -98,22 +115,24 @@ export default () => {
         backgroundColor={db.theme.colors.statuBar}
         barStyle="light-content"
       />
-      <Header>
-        <View style={{flexDirection: 'row'}}>
-          <Image
-            style={{width: 90, height: 90, marginLeft: 20}}
-            source={esp01}
-          />
-          <H1>Adicionar Dispositivo</H1>
-        </View>
-      </Header>
-      <Animatable.View animation="fadeInUpBig" style={[styleGlobal.footer]}>
+      <NewDeviceHeader addButtonPress={addButtonPress} />
+      <ViewFlex>
+        <Header>
+          <View style={{flexDirection: 'row'}}>
+            <Image
+              style={{width: 90, height: 90, marginLeft: 20}}
+              source={esp01}
+            />
+            <H1>Adicionar Dispositivo</H1>
+          </View>
+        </Header>
         <View
           style={styleGlobal.scrollViewSignIn}
           keyboardShouldPersistTaps={'handled'}>
           <PrimaryText>Encontre seu Aloioff!</PrimaryText>
           <SecondaryText>
-            Clique no botão abaixo para pesquisar os dispositivos Aloioff pela rede!
+            Clique no botão abaixo para pesquisar os dispositivos Aloioff pela
+            rede!
           </SecondaryText>
           <ButtonView>
             {!loading && (
@@ -137,26 +156,40 @@ export default () => {
           <View>
             <FlatList
               data={foundEspList}
-              renderItem={({item}) => 
+              renderItem={({item}) => (
                 <View style={{flexDirection: 'row', marginTop: 20}}>
                   <View style={{flex: 3}}>
-                      <Text style={{color: 'black'}}>{item.key}</Text>
+                    <Text style={{color: 'tomato'}}>{item.key}</Text>
                   </View>
-                  <View style={{flex: 1, borderStyle: 'solid', borderWidth: 1, borderColor: db.theme.colors.secondary, borderRadius: 5}}>
+                  <View
+                    style={{
+                      flex: 1,
+                      borderStyle: 'solid',
+                      borderWidth: 1,
+                      borderColor: db.theme.colors.secondary,
+                      borderRadius: 5,
+                    }}>
                     <TouchableOpacity
                       onPress={() => {
-                        console.log("passei aqui no botão adicionar!");
+                        console.log('passei aqui no botão adicionar!');
+                        navigation.navigate('DeviceDetail', item);
                       }}
                       style={{}}>
-                      <Text style={{color: db.theme.colors.secondary, textAlign:'center'}}>+ Adicionar</Text>
+                      <Text
+                        style={{
+                          color: db.theme.colors.secondary,
+                          textAlign: 'center',
+                        }}>
+                        Detalhes
+                      </Text>
                     </TouchableOpacity>
                   </View>
                 </View>
-              }
+              )}
             />
           </View>
         </View>
-      </Animatable.View>
+      </ViewFlex>
     </Container>
   );
 };

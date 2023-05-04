@@ -1,10 +1,6 @@
 import styled from 'styled-components/native';
 import db from '../../../db.json';
 
-export const ScrollViewFlex = styled.ScrollView`
-  flex: 0.8;
-`;
-
 export const PrimaryText = styled.Text`
   font-size: 28px;
   color: ${db.theme.colors.primary};
@@ -13,6 +9,7 @@ export const PrimaryText = styled.Text`
 export const Container = styled.SafeAreaView`
   background-color: ${db.theme.colors.mainBg};
   flex: 1;
+  flex-direction: column;
 `;
 
 export const H1 = styled.Text`
@@ -27,18 +24,17 @@ export const Header = styled.View`
   padding-bottom: 50px;
 `;
 
-export const TitleText = styled.Text`
-  color: tomato;
-  font-size: 28px;
-  margin-left: 20px;
-  margin-top: 20px;
-  font-weight: 800;
+export const ListView = styled.View`
+  flex: 0.85;
+  margin-bottom: 60px;
+  background-color: black;
 `;
 
-export const SubtitleText = styled.Text`
-  color: gray;
-  font-size: 18px;
-  margin-bottom: 20px;
-  margin-left: 20px;
-  font-weight: 700;
+export const TextRegister = styled.Text`
+  margin-top: 20px;
+`;
+
+export const TextItem = styled.Text`
+  padding: 10px;
+  height: 44px;
 `;

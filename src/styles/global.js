@@ -40,7 +40,7 @@ export default StyleSheet.create({
   },
   footer: {
     flex: 3,
-    backgroundColor: '#fff',
+    backgroundColor: db.theme.colors.mainBg,
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     paddingHorizontal: 20,
@@ -48,7 +48,7 @@ export default StyleSheet.create({
   },
   scrollViewSignIn: {
     width: '100%',
-    marginBottom: -25
+    marginBottom: -25,
   },
   textSignIn: {
     fontSize: 18,
